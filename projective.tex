@@ -1,0 +1,81 @@
+\documentclass{article}[11pt]
+\usepackage{amsmath,amsfonts}
+\title{Projective Geometry}
+\begin{document}
+\maketitle
+
+\section{Projective Geometry}
+
+Projective geometry is the geometry of lines.  To understand what this means, consider a vector $v \in \mathbb{R}^{d+1}$.  Scaling $v$ generates a 1D linear subspace, $L_v = \{ t v : t \in \mathbb{R} \}$.  The collection of all such linear subspaces is called the $d$-dimensional \emph{projective space},
+
+\[ \mathbb{P}^d = \{ \{ t v : t \in \mathbb{R} \} : v \in \mathbb{R}^{d+1} \} \]
+
+Equivalently, we can also think of projective space as linear space mod scaling,
+
+\[ \mathbb{P}^d \cong \mathbb{R}^{d+1} / \mathbb{R}^{\times} \]
+
+Where the action of $\mathbb{R}^{\times}$ on $\mathbb{R}^{d+1}$ is defined to be:
+
+\[ t(v) \mapsto t v \]
+
+\section{Embedding Affine Geometry in Projective Geometry}
+
+At first projective space may seem a bit abstract, but there is a good reason to study it:  it is the most natural coordinate system for working with affine geometry!  To see why, let us discuss how to embed $d$-dimensional affine space into $\mathbb{P}^d$.  This can be done by selecting any $d$-dimensional hyperplane in $\mathbb{R}^{d+1}$ that does not pass through the origin, and then taking the lines which intersect this plane to be the points of affine space.  A common choice for these coordinates is the plane,
+
+\[ v_d = 1 \]
+
+The coordinates in the standard basis for $\mathbb{R}^{d+1}$ together with this choice of embedding is called the \emph{homogeneous coordinate system} for $\mathbb{A}^d$.
+
+\section{Subspaces}
+
+One interesting property of projective geometry is that it turns linear subspaces in $\mathbb{R}^{d+1}$ into affine subspaces in $\mathbb{A}^d$.  For example, we have already seen that:
+
+\begin{itemize}
+\item 1D lines in homogeneous coordinates $\mapsto$ 0D points in affine space
+\end{itemize}
+
+This same operation can be extended in an obvious way:
+
+\begin{itemize}
+\item 2D planes in homogeneous coordinates $\mapsto$ 1D lines in affine space
+\item 3D volumes in homogeneous coordinates $\mapsto$ 2D planes in affine space
+\item ...
+\item nD subspaces in homogeneous coordinates $\mapsto$ (n-1)D affine subspaces
+\end{itemize}
+
+\section{Points at Infinity}
+
+But not all lines in the $\mathbb{R}^{d+1}$ must pass through the affine plane.  In particular, there are those lines through the origin which are parallel to the embedding.  These extra lines are called the \emph{points at infinity}, and they behave as if they were infinitely distant to points on the affine plane.  Topologically, they are equivalent to a projective space of one dimension lower than the original projective space.  As a result, we conclude that,
+
+\[ \mathbb{P}^d \cong \mathbb{A}^d \cup \mathbb{P}^{d-1} \]
+
+And by recursion,
+
+\[ \mathbb{P}^d \cong \mathbb{A}^d \cup \mathbb{A}^{d-1} \cup ... \mathbb{A}^0 \]
+
+The existence of these extra points is incredibly useful in simplifying various computations.  Many special cases in affine geometry are handled directly by switching to a homogeneous coordinate system.  The (small) price that the calculations become somewhat more abstract is completely outweighed by the benefit of reduced complexity.
+
+\section{Transformations}
+
+To give a simple example of the power of homogeneous coordinates, let us now consider affine transformations from a projective point of view.  Recall that an affine transform maps points according to the rule:
+
+\[ f(v) \mapsto A v + b \]
+
+Where $A$ is a $d \times d$ matrix and $b$ is a $d$ dimensional vector.  Now consider the same transformation in homogeneous coordinates.  Define the matrix,
+
+\[ M = \left [ \begin{array}{cc}
+A & b \\
+0 & 1 \\
+\end{array} \right ] \]
+
+Then the above affine transformation is equivalent to the linear transformation $M v$.  This extends to composition and inversion, and so any standard functional operation on a projective matrix can be written as a linear algebra problem.
+
+A geometric interpretation of the affine transformation is that it is a linear transformation that fixes the plane $v_d = 1$.  However, we can also consider those transformations which move this plane.  These operations give rise to perspective transformations and are the foundation for 3D graphics.  We can also use the same basic tools from linear algebra for working with subspaces to apply transformations to things like planes or various representations.
+
+\section{Projective Duality}
+
+A more powerful example of projective geometry simplifying life comes from projective duality, which cuts down the amount of work required to prove theorems about geometric spaces in half.
+
+Because affine subspaces in homogeneous coordinates are just linear subspaces, they have a dual (ie orthogonal complement), and under our embedding of affine space this dual is again an affine subspace (though possible one that passes through some points at infinity).  This induces an isomorphism between $n$ and $(d-n)$ dimensional projective subspaces called \emph{projective duality}, and it effectively doubles the power of any theorem that we prove.
+
+\end{document}
